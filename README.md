@@ -24,7 +24,7 @@ This contains the source code for the **Exam Copy Package Management System** . 
   #### Frontend
 
   ```sh
-  cd frontend
+  cd client
   npm install --force
   ```
 
