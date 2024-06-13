@@ -1,0 +1,40 @@
+{
+	"name": "exam-package-management-system",
+	"version": "1.0.0",
+	"description": "System to manage exam packages",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index",
+		"react": "npm start --prefix frontend",
+		"server": "node index",
+		"dev:server": "nodemon index",
+		"dev:react": "npm run react",
+		"dev": "concurrently \"npm run dev:server\" \"npm run react \""
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"concurrently": "^5.0.2",
+		"nodemon": "^2.0.6"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"config": "^3.1.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-session": "^1.17.1",
+		"express-validator": "^6.1.1",
+		"fs": "^0.0.1-security",
+		"joi": "^14.3.1",
+		"md5": "^2.3.0",
+		"mysql": "^2.17.1",
+		"mysql-client": "^0.3.0",
+		"node": "^20.2.0",
+		"node-fetch": "^2.6.0",
+		"passport": "^0.6.0",
+		"passport-local": "^1.0.0",
+		"sqlite3": "^5.0.1",
+		"xlsjs": "^0.7.6",
+		"xlsx": "^0.18.5"
+	}
+}
