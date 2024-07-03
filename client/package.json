@@ -49,7 +49,7 @@
 			"last 1 safari version"
 		]
 	},
-	"proxy":"http://backend:9132",
+	"proxy":"http://poka-backend.bct.itclub.pp.ua",
 	"devDependencies": {
 		"eslint-plugin-react-hooks": "^4.6.0"
 	}
