@@ -131,8 +131,8 @@ try {
   });
 
   //PORT
-  const port = process.env.PORT || 4000;
-  app.listen(port, () => console.log(`Listening on port ${port}`));
+  const port = 9132;
+  app.listen(port,'0.0.0.0', () => console.log(`Listening on port ${port}`));
 } catch (error) {
   console.error(error);
 }
