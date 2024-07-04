@@ -63,7 +63,7 @@ class ExamTable extends React.Component {
   
   componentDidMount = () => {
     console.log( 'hellow')
-    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getExams")
+    fetch("/API/query/getExams")
       .then((res) => res.json())
       .then((json) => {
         //Group by data and year to separate exams

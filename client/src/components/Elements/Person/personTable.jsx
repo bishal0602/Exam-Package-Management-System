@@ -97,7 +97,7 @@ class PersonTable extends React.Component {
   };
 
   componentWillMount = () => {
-    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getPerson")
+    fetch("/API/query/getPerson")
       .then((res) => res.json())
       .then((json) => {
         let categories = utils.createCategories(json, this.headings);

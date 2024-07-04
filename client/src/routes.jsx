@@ -41,7 +41,7 @@ import adbs from "ad-bs-converter";
 
 const loader = async ( {params} ) =>{
   const teacherID = params.teacherID
-  const result = await fetch( `${import.meta.env.VITE_BACKEND_URL}API/query/getPersonSpecificPackage/${teacherID}`)
+  const result = await fetch( `/API/query/getPersonSpecificPackage/${teacherID}`)
   if( result.ok )
   {
     const jsonResult = await result.json();

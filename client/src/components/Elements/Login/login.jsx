@@ -12,7 +12,7 @@ const Login = () => {
     
     const handleSubmit = (e) =>{
         e.preventDefault();
-        fetch(`${import.meta.env.VITE_BACKEND_URL}API/login`, {
+        fetch(`/API/login`, {
             method: "post",
             headers: {
               "Content-Type": "application/json",

@@ -60,7 +60,7 @@ class SubjectTable extends Component {
         tableData: this.props.postedData,
       });
     } else {
-      fetch(`${import.meta.env.VITE_BACKEND_URL}API/query/getSubjectList`)
+      fetch(`/API/query/getSubjectList`)
         .then((res) => res.json())
         .then((json) => {
           let categories = utils.createCategories(json, this.headings);

@@ -338,20 +338,20 @@ class AddNewPackage extends Component {
     let programData = [];
     let subjectData = [];
     let examData = [];
-    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getProgramList")
+    await fetch("/API/query/getProgramList")
       .then((res) => res.json())
       .then((json) => {
         console.log( json )
         programData = json;
       });
 
-    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getSubjectList")
+    await fetch("/API/query/getSubjectList")
       .then((res) => res.json())
       .then((json) => {
         subjectData = json;
         console.log("This is subject data", subjectData)
       });
-    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getExams")
+    await fetch("/API/query/getExams")
       .then((res) => res.json())
       .then((json) => {
         examData = json;
@@ -362,7 +362,7 @@ class AddNewPackage extends Component {
 
     if (packageID !== undefined) {
       fetch(
-        import.meta.env.VITE_BACKEND_URL + "API/query/getOnePackage/" + packageID
+        "/API/query/getOnePackage/" + packageID
       )
         .then((res) => res.json())
         .then(async (json) => {
@@ -451,12 +451,12 @@ class AddNewPackage extends Component {
 
     console.log(dataToSubmit);
 
-    let url = `${import.meta.env.VITE_BACKEND_URL}API/query/addPackage`;
+    let url = `/API/query/addPackage`;
     let methodType = "POST";
     //URL for update route
     const packageID = this.props.match?.params.packageID;
     if (packageID !== undefined) {
-      url = `${import.meta.env.VITE_BACKEND_URL}API/query/editPackage/${packageID}`;
+      url = `/API/query/editPackage/${packageID}`;
       methodType = "PUT";
     }
     fetch(url, {

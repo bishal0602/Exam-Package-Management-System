@@ -228,7 +228,7 @@ class AssignPackage extends Component {
       return new Date(this.valueOf() + 864e5 * d);
     };
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL}API/query/getOnePerson/${params.personID}`
+      `/API/query/getOnePerson/${params.personID}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -258,7 +258,7 @@ class AssignPackage extends Component {
       });
 
     //Fetch data from API and store data in options
-    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getNotAssignedPackages")
+    fetch("/API/query/getNotAssignedPackages")
       .then((res) => res.json())
       .then((json) => {
         for (let pkg of json) {
@@ -363,7 +363,7 @@ class AssignPackage extends Component {
       }
     }
     console.log("datatosubmite", dataToSubmit);
-    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/addAssignment", {
+    fetch("/API/query/addAssignment", {
       method: "POST",
       headers: {
         Accept: "application/json",

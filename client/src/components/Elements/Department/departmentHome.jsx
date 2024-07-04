@@ -39,7 +39,7 @@ class DepartmentHome extends React.Component {
   componentDidMount = () => {
     console.log(import.meta.env.VITE_BACKEND_URL);
 
-    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getDepartmentList")
+    fetch("/API/query/getDepartmentList")
       .then((res) => res.json())
       .then((json) => {
         this.setState({
