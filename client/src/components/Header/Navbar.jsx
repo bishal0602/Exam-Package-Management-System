@@ -15,7 +15,7 @@ export default function ButtonAppBar() {
 
   const [session, setSession] = useState("");
   useEffect(() => {
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/getSessionName")
+    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getSessionName")
       .then((res) => res.json())
       .then((json) => setSession(json.sessionName))
       .catch((err) => console.log(err));
@@ -25,7 +25,7 @@ export default function ButtonAppBar() {
   const navigate = useNavigate();
 
   const logout = () =>{
-    fetch( process.env.REACT_APP_BASE_URL + "API/logout").then( 
+    fetch( import.meta.env.VITE_BACKEND_URL + "API/logout").then( 
       ( res ) =>{
         if( res.ok){
           navigate('/login');        

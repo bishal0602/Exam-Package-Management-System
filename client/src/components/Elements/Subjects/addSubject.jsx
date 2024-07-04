@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import FormFields from "../../Widgets/Form/forms.js";
-import SubjectTable from "./subjectTable.js";
+import FormFields from "../../Widgets/Form/forms.jsx";
+import SubjectTable from "./subjectTable.jsx";
 
 class AddNewSubject extends Component {
   constructor(props) {
@@ -177,7 +177,7 @@ class AddNewSubject extends Component {
 
   componentDidMount = async () => {
     let programData = [];
-    await fetch(process.env.REACT_APP_BASE_URL + "API/query/getProgramList")
+    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getProgramList")
       .then((res) => res.json())
       .then((json) => {
         programData = json;
@@ -189,7 +189,7 @@ class AddNewSubject extends Component {
     // const subjectID = this.props.match?.params.subjectID;
     // if (subjectID !== undefined) {
     //   fetch(
-    //     process.env.REACT_APP_BASE_URL + "API/query/getOneSubject/" + subjectID
+    //     import.meta.env.VITE_BACKEND_URL + "API/query/getOneSubject/" + subjectID
     //   )
     //     .then((res) => res.json())
     //     .then(async (json) => {
@@ -253,13 +253,13 @@ class AddNewSubject extends Component {
     }
 
     console.log(dataToSubmit);
-    let url = `${process.env.REACT_APP_BASE_URL}API/query/addSubject`;
+    let url = `${import.meta.env.VITE_BACKEND_URL}API/query/addSubject`;
     let methodType = "POST";
 
     //URL for update route
     // const subjectID = this.props.match?.params.subjectID;
     // if (subjectID !== undefined) {
-    //   url = `${process.env.REACT_APP_BASE_URL}API/query/editSubject/${subjectID}`;
+    //   url = `${import.meta.env.VITE_BACKEND_URL}API/query/editSubject/${subjectID}`;
     //   methodType = "PUT";
     // }
     fetch(url, {

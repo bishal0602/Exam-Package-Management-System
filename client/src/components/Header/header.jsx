@@ -14,7 +14,7 @@ const Header = (props) => {
   const navigate = useNavigate();
   const [session, setSession] = useState("");
   useEffect(() => {
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/getSessionName")
+    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getSessionName")
       .then((res) => res.json())
       .then((json) => setSession(json.sessionName))
       .catch((err) => console.log(err));
@@ -49,7 +49,7 @@ const Header = (props) => {
           <div className="user-logo">
             <button
               onClick={() => {
-                fetch(`${process.env.REACT_APP_BASE_URL}API/logout`).then(( res ) => {
+                fetch(`${import.meta.env.VITE_BACKEND_URL}API/logout`).then(( res ) => {
                   if( res.ok ){
                      navigate( '/login')
                   }

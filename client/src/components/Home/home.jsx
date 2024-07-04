@@ -1,9 +1,9 @@
 import React from "react";
-import Buttons from "./homebuttons.js";
-import PendingPackageTable from "./pendingPackageTable.js";
+import Buttons from "./homebuttons.jsx";
+import PendingPackageTable from "./pendingPackageTable.jsx";
 import "./buttons.css";
 import { faPlus, faEdit } from "@fortawesome/free-solid-svg-icons";
-import BreadCrumb from "../Widgets/Breadcrumb/breadcrumb.js";
+import BreadCrumb from "../Widgets/Breadcrumb/breadcrumb.jsx";
 import { MDBCard, MDBCardBody, MDBCardHeader } from "mdbreact";
 
 const buttons = [

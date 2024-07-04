@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import FormFields from "../../Widgets/Form/forms.js";
-import PackageTable from "./packageTable.js";
-import BreadCrumb from "../../Widgets/Breadcrumb/breadcrumb.js";
+import FormFields from "../../Widgets/Form/forms.jsx";
+import PackageTable from "./packageTable.jsx";
+import BreadCrumb from "../../Widgets/Breadcrumb/breadcrumb.jsx";
 
 const breadCrumbItems = [
   {
@@ -338,20 +338,20 @@ class AddNewPackage extends Component {
     let programData = [];
     let subjectData = [];
     let examData = [];
-    await fetch(process.env.REACT_APP_BASE_URL + "API/query/getProgramList")
+    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getProgramList")
       .then((res) => res.json())
       .then((json) => {
         console.log( json )
         programData = json;
       });
 
-    await fetch(process.env.REACT_APP_BASE_URL + "API/query/getSubjectList")
+    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getSubjectList")
       .then((res) => res.json())
       .then((json) => {
         subjectData = json;
         console.log("This is subject data", subjectData)
       });
-    await fetch(process.env.REACT_APP_BASE_URL + "API/query/getExams")
+    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getExams")
       .then((res) => res.json())
       .then((json) => {
         examData = json;
@@ -362,7 +362,7 @@ class AddNewPackage extends Component {
 
     if (packageID !== undefined) {
       fetch(
-        process.env.REACT_APP_BASE_URL + "API/query/getOnePackage/" + packageID
+        import.meta.env.VITE_BACKEND_URL + "API/query/getOnePackage/" + packageID
       )
         .then((res) => res.json())
         .then(async (json) => {
@@ -451,12 +451,12 @@ class AddNewPackage extends Component {
 
     console.log(dataToSubmit);
 
-    let url = `${process.env.REACT_APP_BASE_URL}API/query/addPackage`;
+    let url = `${import.meta.env.VITE_BACKEND_URL}API/query/addPackage`;
     let methodType = "POST";
     //URL for update route
     const packageID = this.props.match?.params.packageID;
     if (packageID !== undefined) {
-      url = `${process.env.REACT_APP_BASE_URL}API/query/editPackage/${packageID}`;
+      url = `${import.meta.env.VITE_BACKEND_URL}API/query/editPackage/${packageID}`;
       methodType = "PUT";
     }
     fetch(url, {

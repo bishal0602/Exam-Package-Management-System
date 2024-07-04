@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import PersonTable from "../Person/personTable.js";
-import PersonForm from "../Person/person.js";
+import PersonTable from "../Person/personTable.jsx";
+import PersonForm from "../Person/person.jsx";
 import { MDBCard, MDBCardHeader, MDBCardBody } from "mdbreact";
-import BreadCrumbs from "../../Widgets/Breadcrumb/breadcrumb.js";
+import BreadCrumbs from "../../Widgets/Breadcrumb/breadcrumb.jsx";
 import { Link } from "react-router-dom";
 import "./assignment.css";
 

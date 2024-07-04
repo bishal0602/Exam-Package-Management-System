@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import FormFields from "../../Widgets/Form/forms.js";
-import ProgramTable from "./programTable.js";
+import FormFields from "../../Widgets/Form/forms.jsx";
+import ProgramTable from "./programTable.jsx";
 
 class AddNewProgram extends Component {
   constructor(props) {
@@ -70,7 +70,7 @@ class AddNewProgram extends Component {
     };
   }
   componentDidMount = () => {
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/getDepartmentList")
+    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getDepartmentList")
       .then((res) => res.json())
       .then((json) => {
         console.log("Department List", json);
@@ -90,7 +90,7 @@ class AddNewProgram extends Component {
     const programID = this.props.match?.params.programID;
     if (programID !== undefined) {
       fetch(
-        process.env.REACT_APP_BASE_URL + "API/query/getProgram/" + programID
+        import.meta.env.VITE_BACKEND_URL + "API/query/getProgram/" + programID
       )
         .then((res) => res.json())
         .then((json) => {
@@ -133,13 +133,13 @@ class AddNewProgram extends Component {
     }
     console.log(dataToSubmit);
 
-    let url = `${process.env.REACT_APP_BASE_URL}API/query/addProgram`;
+    let url = `${import.meta.env.VITE_BACKEND_URL}API/query/addProgram`;
     let methodType = "POST";
 
     //URL for update route
     const programID = this.props.match?.params.programID;
     if (programID !== undefined) {
-      url = `${process.env.REACT_APP_BASE_URL}API/query/editProgram/${programID}`;
+      url = `${import.meta.env.VITE_BACKEND_URL}API/query/editProgram/${programID}`;
       methodType = "PUT";
     }
     fetch(url, {

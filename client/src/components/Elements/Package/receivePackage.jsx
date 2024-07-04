@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
 import { calendarFunctions } from "../../Widgets/jquery.nepaliDatePicker";
 //Components
-import Form from "../../Widgets/Form/forms.js";
-let adbs = require("ad-bs-converter");
+import Form from "../../Widgets/Form/forms.jsx";
+import adbs from "ad-bs-converter";
 
 class ReceivePackage extends Component {
   state = {
@@ -225,7 +225,7 @@ class ReceivePackage extends Component {
     
     let params = { assignmentID : getDigitsAfterLastSlash( currentURL) }
     fetch(
-      `${process.env.REACT_APP_BASE_URL}API/query/getOneAssignment/${params.assignmentID}`
+      `${import.meta.env.VITE_BACKEND_URL}API/query/getOneAssignment/${params.assignmentID}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -292,7 +292,7 @@ class ReceivePackage extends Component {
     }
     console.log(this.state);
 
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/receivePackage", {
+    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/receivePackage", {
       method: "PUT",
       headers: {
         Accept: "application/json",

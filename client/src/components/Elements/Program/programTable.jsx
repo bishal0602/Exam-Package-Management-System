@@ -1,46 +1,44 @@
-import React, { Component, Fragment, useState } from "react";
-import Table from "../../Widgets/Tables/tables.js";
+import React, { Component, Fragment } from "react";
+import Table from "../../Widgets/Tables/tables.jsx";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import utils from "../../../utils/utils.js";
-
-
-class SubjectTable extends Component {
+import utils from "../../../utils/utils.jsx";
+class ProgramTable extends Component {
   headings = [
-
     {
-      label: "Subject Name",
-      sort: "asc",
-      field: "subjectName",
-    },
-    {
-      label: "Course Code",
-      sort: "asc",
-      field: "courseCode",
-    },
-    {
-      label: "Program",
+      label: "Program Name",
       sort: "asc",
       field: "programName",
+    },
+    {
+      label: "Level",
+      sort: "asc",
+      field: "academicDegree",
       grouping: true,
     },
-  ];
 
-  actions = [
     {
-      text: "Edit",
-      icon: faEdit,
-      link: "/admin/edit-subject/",
-    },
-    {
-      text: "Delete",
-      icon: faTrash,
-      link: "/admin/delete/subject/",
+      label: "Department Name",
+      sort: "asc",
+      field: "departmentName",
+      grouping: true,
     },
   ];
   quickLinks = [
     {
-      text: "Add New Subject",
-      link: "/admin/add-new-subject",
+      text: "Add New Program",
+      link: "/admin/add-new-program",
+    },
+  ];
+  actions = [
+    {
+      text: "Edit",
+      icon: faEdit,
+      link: "/admin/edit-program/",
+    },
+    {
+      text: "Delete",
+      icon: faTrash,
+      link: "/admin/delete/program/",
     },
   ];
 
@@ -53,14 +51,25 @@ class SubjectTable extends Component {
   };
   componentDidMount = () => {
     if (this.props.hasOwnProperty("postedData")) {
-      this.props.postedData.forEach((element) => {
-        delete element.level;
-      });
+      // let {tableData} = this.state;
+      // let postedData = this.props.postedData
+      // for (let index in postedData)
+      // {
+      //     console.log(index)
+      //     let temptableData = {}
+      //     temptableData["programName"] = postedData[index].programName;
+      //     temptableData["departmentName"] = postedData[index].departmentID;
+      //     temptableData["level"] = postedData[index].level;
+      //     tableData.push(temptableData)
+      // }
+      // this.setState({
+      //     tableData
+      // })
       this.setState({
         tableData: this.props.postedData,
       });
     } else {
-      fetch(`${process.env.REACT_APP_BASE_URL}API/query/getSubjectList`)
+      fetch(`${import.meta.env.VITE_BACKEND_URL}API/query/getProgramList`)
         .then((res) => res.json())
         .then((json) => {
           let categories = utils.createCategories(json, this.headings);
@@ -96,4 +105,4 @@ class SubjectTable extends Component {
   }
 }
 
-export default SubjectTable;
+export default ProgramTable;

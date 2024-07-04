@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import FormFields from "../../Widgets/Form/forms.js";
-import BreadCrumb from "../../Widgets/Breadcrumb/breadcrumb.js";
-import ExamTable from "./examListingTable.js";
+import FormFields from "../../Widgets/Form/forms.jsx";
+import BreadCrumb from "../../Widgets/Breadcrumb/breadcrumb.jsx";
+import ExamTable from "./examListingTable.jsx";
 import { calendarFunctions } from "../../Widgets/jquery.nepaliDatePicker";
 // import { useNavigate } from 'react-router-dom'
-let adbs = require("ad-bs-converter");
+import adbs from "ad-bs-converter";
 
 const breadCrumbItems = [
   {
@@ -266,14 +266,14 @@ class AddNewExam extends Component {
   componentDidMount = async () => {
     let programData = [];
     let subjectData = [];
-    await fetch(process.env.REACT_APP_BASE_URL + "API/query/getProgramList")
+    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getProgramList")
       .then((res) => res.json())
       .then((json) => {
         // console.log( json )
         programData = json;
       });
 
-    await fetch(process.env.REACT_APP_BASE_URL + "API/query/getSubjectList")
+    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getSubjectList")
       .then((res) => res.json())
       .then((json) => {
         subjectData = json;
@@ -283,7 +283,7 @@ class AddNewExam extends Component {
     const examID = this.props.match?.params.examID;
     if (examID !== undefined) {
       await fetch(
-        process.env.REACT_APP_BASE_URL + "API/query/getExams/" + examID
+        import.meta.env.VITE_BACKEND_URL + "API/query/getExams/" + examID
       )
         .then((res) => res.json())
         .then((json) => {
@@ -400,13 +400,13 @@ class AddNewExam extends Component {
     }
 
     console.log(dataToSubmit);
-    let url = `${process.env.REACT_APP_BASE_URL}API/query/addExam`;
+    let url = `${import.meta.env.VITE_BACKEND_URL}API/query/addExam`;
     let methodType = "POST";
 
     //URL for update route
     const examID = this.props.match?.params.examID;
     if (examID !== undefined) {
-      url = `${process.env.REACT_APP_BASE_URL}API/query/editExam/${examID}`;
+      url = `${import.meta.env.VITE_BACKEND_URL}API/query/editExam/${examID}`;
       methodType = "PUT";
     }
     fetch(url, {

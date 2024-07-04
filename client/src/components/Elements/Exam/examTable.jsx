@@ -3,8 +3,8 @@ import React from "react";
 
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Table from "../../Widgets/Tables/tables.js";
-import utils from "../../../utils/utils.js";
+import Table from "../../Widgets/Tables/tables.jsx";
+import utils from "../../../utils/utils.jsx";
 
 class ExamTable extends React.Component {
   quickLinks = [{ text: "Add New Exam", link: "/admin/add-new-exam" }];
@@ -63,7 +63,7 @@ class ExamTable extends React.Component {
   
   componentDidMount = () => {
     console.log( 'hellow')
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/getExams")
+    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getExams")
       .then((res) => res.json())
       .then((json) => {
         //Group by data and year to separate exams

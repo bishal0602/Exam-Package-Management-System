@@ -1,8 +1,8 @@
 import React from "react";
-import Table from "../Widgets/Tables/tables.js";
+import Table from "../Widgets/Tables/tables.jsx";
 import { faReceipt } from "@fortawesome/free-solid-svg-icons";
-import utils from "../../utils/utils.js";
-let adbs = require("ad-bs-converter");
+import utils from "../../utils/utils.jsx";
+import adbs from "ad-bs-converter";
 
 
 class PendingPackageTable extends React.Component {
@@ -111,7 +111,7 @@ class PendingPackageTable extends React.Component {
     return [year, month, day].join("/");
   }
   getPendingPackageFromAPI = () => {
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/getPendingPackages")
+    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getPendingPackages")
       .then((res) => res.json())
       .then((json) => {
         //Calculate if package is overdue

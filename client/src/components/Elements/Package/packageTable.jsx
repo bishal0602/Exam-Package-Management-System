@@ -1,7 +1,7 @@
 import React from "react";
-import Table from "../../Widgets/Tables/tables.js";
+import Table from "../../Widgets/Tables/tables.jsx";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import utils from "../../../utils/utils.js";
+import utils from "../../../utils/utils.jsx";
 class PackageTable extends React.Component {
   sortingOnlyList = ["Status"];
   headings = [
@@ -131,7 +131,7 @@ class PackageTable extends React.Component {
     if (this.props.initialData) {
       this.deleteUnnecessaryTableData(this.props);
     } else {
-      fetch(process.env.REACT_APP_BASE_URL + "API/query/getAllPackages")
+      fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getAllPackages")
         .then((res) => res.json())
         .then((json) => {
           console.log(json);

@@ -2,7 +2,7 @@ import React , {Component}  from 'react';
 import './layout.css'
 import {Breadcrumbs} from 'react-breadcrumbs-dynamic';
 import {Outlet} from 'react-router-dom';
-import Navbar from '../components/Header/Navbar.js'
+import Navbar from '../components/Header/Navbar.jsx'
 class Layout extends Component {
 
     state = {
