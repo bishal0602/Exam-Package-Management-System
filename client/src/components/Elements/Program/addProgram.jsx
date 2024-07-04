@@ -70,7 +70,7 @@ class AddNewProgram extends Component {
     };
   }
   componentDidMount = () => {
-    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getDepartmentList")
+    fetch("/API/query/getDepartmentList")
       .then((res) => res.json())
       .then((json) => {
         console.log("Department List", json);
@@ -90,7 +90,7 @@ class AddNewProgram extends Component {
     const programID = this.props.match?.params.programID;
     if (programID !== undefined) {
       fetch(
-        import.meta.env.VITE_BACKEND_URL + "API/query/getProgram/" + programID
+        "/API/query/getProgram/" + programID
       )
         .then((res) => res.json())
         .then((json) => {
@@ -133,13 +133,13 @@ class AddNewProgram extends Component {
     }
     console.log(dataToSubmit);
 
-    let url = `${import.meta.env.VITE_BACKEND_URL}API/query/addProgram`;
+    let url = `/API/query/addProgram`;
     let methodType = "POST";
 
     //URL for update route
     const programID = this.props.match?.params.programID;
     if (programID !== undefined) {
-      url = `${import.meta.env.VITE_BACKEND_URL}API/query/editProgram/${programID}`;
+      url = `/API/query/editProgram/${programID}`;
       methodType = "PUT";
     }
     fetch(url, {

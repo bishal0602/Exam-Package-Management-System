@@ -225,7 +225,7 @@ class ReceivePackage extends Component {
     
     let params = { assignmentID : getDigitsAfterLastSlash( currentURL) }
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL}API/query/getOneAssignment/${params.assignmentID}`
+      `/API/query/getOneAssignment/${params.assignmentID}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -292,7 +292,7 @@ class ReceivePackage extends Component {
     }
     console.log(this.state);
 
-    fetch(import.meta.env.VITE_BACKEND_URL + "API/query/receivePackage", {
+    fetch("/API/query/receivePackage", {
       method: "PUT",
       headers: {
         Accept: "application/json",

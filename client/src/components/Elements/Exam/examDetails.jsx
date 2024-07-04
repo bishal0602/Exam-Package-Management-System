@@ -31,7 +31,7 @@ export class ExamDetails extends Component {
     const examType = this.groupDetails.exams[0].examType;
     console.log(yyDate);
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL}API/query/getPendingExamPackages/${groupID}`
+      `/API/query/getPendingExamPackages/${groupID}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -41,7 +41,7 @@ export class ExamDetails extends Component {
       });
 
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL}API/query/getNotAssignedExamPackages/${groupID}`
+      `/API/query/getNotAssignedExamPackages/${groupID}`
     )
       .then((res) => res.json())
       .then((json) => {

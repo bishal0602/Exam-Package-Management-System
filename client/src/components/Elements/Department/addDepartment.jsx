@@ -41,7 +41,7 @@ class AddNewDepartment extends Component {
 		const departmentID = this.props.match?.params.departmentID;
 		if (departmentID !== undefined) {
 			fetch(
-				`${import.meta.env.VITE_BACKEND_URL}API/query/getOneDepartment/` +
+				`/API/query/getOneDepartment/` +
 					departmentID
 			)
 				.then(res => res.json())
@@ -81,13 +81,13 @@ class AddNewDepartment extends Component {
 		}
 		console.log(dataToSubmit);
 
-		let url = `${import.meta.env.VITE_BACKEND_URL}API/query/addDepartment`;
+		let url = `/API/query/addDepartment`;
 		let methodType = "POST";
 
 		//URL for update route
 		const departmentID = this.props.match?.params.departmentID;
 		if (departmentID !== undefined) {
-			url = `${import.meta.env.VITE_BACKEND_URL}API/query/editDepartment/${departmentID}`;
+			url = `/API/query/editDepartment/${departmentID}`;
 			methodType = "PUT";
 		}
 		console.log(methodType);

@@ -7,5 +7,13 @@ export default defineConfig(() => {
       outDir: 'build',
     },
     plugins: [react()],
+    server: {
+    proxy: {
+      '/API': {
+        target: 'http://localhost:9132',
+        changeOrigin: true,
+      },
+    },
+  },
   };
 });

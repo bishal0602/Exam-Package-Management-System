@@ -177,7 +177,7 @@ class AddNewSubject extends Component {
 
   componentDidMount = async () => {
     let programData = [];
-    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getProgramList")
+    await fetch("/API/query/getProgramList")
       .then((res) => res.json())
       .then((json) => {
         programData = json;
@@ -189,7 +189,7 @@ class AddNewSubject extends Component {
     // const subjectID = this.props.match?.params.subjectID;
     // if (subjectID !== undefined) {
     //   fetch(
-    //     import.meta.env.VITE_BACKEND_URL + "API/query/getOneSubject/" + subjectID
+    //     "/API/query/getOneSubject/" + subjectID
     //   )
     //     .then((res) => res.json())
     //     .then(async (json) => {
@@ -253,13 +253,13 @@ class AddNewSubject extends Component {
     }
 
     console.log(dataToSubmit);
-    let url = `${import.meta.env.VITE_BACKEND_URL}API/query/addSubject`;
+    let url = `/API/query/addSubject`;
     let methodType = "POST";
 
     //URL for update route
     // const subjectID = this.props.match?.params.subjectID;
     // if (subjectID !== undefined) {
-    //   url = `${import.meta.env.VITE_BACKEND_URL}API/query/editSubject/${subjectID}`;
+    //   url = `/API/query/editSubject/${subjectID}`;
     //   methodType = "PUT";
     // }
     fetch(url, {

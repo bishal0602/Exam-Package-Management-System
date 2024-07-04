@@ -266,14 +266,14 @@ class AddNewExam extends Component {
   componentDidMount = async () => {
     let programData = [];
     let subjectData = [];
-    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getProgramList")
+    await fetch("/API/query/getProgramList")
       .then((res) => res.json())
       .then((json) => {
         // console.log( json )
         programData = json;
       });
 
-    await fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getSubjectList")
+    await fetch("/API/query/getSubjectList")
       .then((res) => res.json())
       .then((json) => {
         subjectData = json;
@@ -283,7 +283,7 @@ class AddNewExam extends Component {
     const examID = this.props.match?.params.examID;
     if (examID !== undefined) {
       await fetch(
-        import.meta.env.VITE_BACKEND_URL + "API/query/getExams/" + examID
+        "/API/query/getExams/" + examID
       )
         .then((res) => res.json())
         .then((json) => {
@@ -400,13 +400,13 @@ class AddNewExam extends Component {
     }
 
     console.log(dataToSubmit);
-    let url = `${import.meta.env.VITE_BACKEND_URL}API/query/addExam`;
+    let url = `/API/query/addExam`;
     let methodType = "POST";
 
     //URL for update route
     const examID = this.props.match?.params.examID;
     if (examID !== undefined) {
-      url = `${import.meta.env.VITE_BACKEND_URL}API/query/editExam/${examID}`;
+      url = `/API/query/editExam/${examID}`;
       methodType = "PUT";
     }
     fetch(url, {

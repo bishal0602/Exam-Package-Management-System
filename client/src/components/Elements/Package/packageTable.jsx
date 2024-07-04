@@ -131,7 +131,7 @@ class PackageTable extends React.Component {
     if (this.props.initialData) {
       this.deleteUnnecessaryTableData(this.props);
     } else {
-      fetch(import.meta.env.VITE_BACKEND_URL + "API/query/getAllPackages")
+      fetch("/API/query/getAllPackages")
         .then((res) => res.json())
         .then((json) => {
           console.log(json);
