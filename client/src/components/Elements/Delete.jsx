@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function Delete(props) {
-  const type = props.match.params.type;
-  const id = props.match.params.id;
+  const { type, id } = useParams();
   const [deleted, setDeleted] = useState(false);
   const [fetched, setFetched] = useState(false);
 
-  console.log(type, id);
   useEffect(() => {
     const confirmData = window.confirm(
       `Are you sure you want to delete ${type} with id ${id}?`
@@ -15,6 +14,7 @@ export default function Delete(props) {
     if (confirmData) {
       const controller = new AbortController();
       const signal = controller.signal;
+
       fetch(`/API/query/${type}/${id}`, {
         method: "delete",
         signal,
@@ -22,13 +22,16 @@ export default function Delete(props) {
         .then((res) => {
           if (res.ok) {
             setDeleted(true);
-            setFetched(true);
           }
+          setFetched(true);
         })
-        .catch(console.err);
-      setFetched(true);
+        .catch((err) => {
+          console.error("Error deleting:", err);
+          setFetched(true); // Ensure fetched is set to true even on error
+        });
+
       return () => {
-        controller.abort();
+        controller.abort(); // Cleanup function to abort fetch if component unmounts
       };
     }
   }, [type, id]);
@@ -40,7 +43,7 @@ export default function Delete(props) {
           {deleted ? (
             <p>Your {type} has been deleted.</p>
           ) : (
-            <p>Cannot delete your {type} because it has associated data.</p>
+            <p>Cannot delete your {type},{deleted?"fetched":"not fetched"} because it has associated data.</p>
           )}
         </p>
       )}
