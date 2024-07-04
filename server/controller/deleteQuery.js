@@ -1,13 +1,14 @@
 const express = require("express");
 const { connectToDB } = require("../database");
+const { check, validationResult } = require("express-validator");
 
 const router = express.Router();
 
 router.delete("/package/:id", (req, res) => {
-  const deletePackageQuery = `DELETE FROM package WHERE id=${req.params.id}`;
+  const deletePackageQuery = `DELETE FROM package WHERE id=?`;
 
   const db = connectToDB();
-  db.run(deletePackageQuery, [], function (err) {
+  db.run(deletePackageQuery, [req.params.id], function (err) {
     if (err) {
       res.status(400).send(req.body);
       console.log(err)
@@ -91,11 +92,12 @@ router.delete("/subject/:id", (req, res) => {
 });
 
 router.delete("/program/:id", (req, res) => {
+  console.log("delete for program id: "+`${req.params.id}`);
   const deleteQuery = `
-        DELETE FROM program WHERE id = ${req.params.id} 
+        DELETE FROM program WHERE id = ?
         `;
   const db = connectToDB();
-  db.run(deleteQuery, [], function (err) {
+  db.run(deleteQuery, [req.params.id], function (err) {
     if (err) {
       res.status(400).send(req.body);
       return console.error(err.message);
