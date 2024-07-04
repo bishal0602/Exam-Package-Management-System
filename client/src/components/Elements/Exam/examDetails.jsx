@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import PendingPackageTable from "../../Home/pendingPackageTable.js";
+import PendingPackageTable from "../../Home/pendingPackageTable.jsx";
 import { MDBCard, MDBCardBody, MDBCardHeader } from "mdbreact";
-import PackageTable from "../Package/packageTable.js";
+import PackageTable from "../Package/packageTable.jsx";
 
-import ExamListingTable from "./examListingTable.js";
+import ExamListingTable from "./examListingTable.jsx";
 
 import "./exams.css";
 export class ExamDetails extends Component {
@@ -31,7 +31,7 @@ export class ExamDetails extends Component {
     const examType = this.groupDetails.exams[0].examType;
     console.log(yyDate);
     fetch(
-      `${process.env.REACT_APP_BASE_URL}API/query/getPendingExamPackages/${groupID}`
+      `/API/query/getPendingExamPackages/${groupID}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -41,7 +41,7 @@ export class ExamDetails extends Component {
       });
 
     fetch(
-      `${process.env.REACT_APP_BASE_URL}API/query/getNotAssignedExamPackages/${groupID}`
+      `/API/query/getNotAssignedExamPackages/${groupID}`
     )
       .then((res) => res.json())
       .then((json) => {

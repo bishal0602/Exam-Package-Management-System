@@ -7,7 +7,7 @@ const Session = () => {
   const [selectedOldArchive, setSelectedOldArchive] = useState("");
   const navigate = useNavigate()
   useEffect(() => {
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/getOldArchives")
+    fetch("/API/query/getOldArchives")
       .then((res) => {
         if (res.status === 200) {
           res.json().then((json) => {
@@ -32,7 +32,7 @@ const Session = () => {
     );
 
     if (archiveCofirm) {
-      fetch(process.env.REACT_APP_BASE_URL + "API/query/addNewSession", {
+      fetch("/API/query/addNewSession", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -62,7 +62,7 @@ const Session = () => {
     );
 
     if (loadCofirm) {
-      fetch(process.env.REACT_APP_BASE_URL + "API/query/loadSession", {
+      fetch("/API/query/loadSession", {
         method: "POST",
         headers: {
           Accept: "application/json",

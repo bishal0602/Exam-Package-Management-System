@@ -1,8 +1,8 @@
 import React from 'react';
 
-import PackageTable from './packageTable.js'
+import PackageTable from './packageTable.jsx'
 import './packages.css'
-import BreadCrumb from '../../Widgets/Breadcrumb/breadcrumb.js'
+import BreadCrumb from '../../Widgets/Breadcrumb/breadcrumb.jsx'
 
 
 

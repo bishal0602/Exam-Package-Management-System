@@ -2,46 +2,46 @@ import React, { useState, useEffect } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 //HOC
-import Layout from "./hoc/layout.js";
+import Layout from "./hoc/layout.jsx";
 // Components
-import Home from "./components/Home/home.js";
+import Home from "./components/Home/home.jsx";
 
-import AddPackage from "./components/Elements/Package/addpackage.js";
-import Intermediate from "./components/Elements/Assignment/intermediate.js";
-import AssignPackage from "./components/Elements/Assignment/assignPackage.js";
-import PackageHome from "./components/Elements/Package/packageHome.js";
+import AddPackage from "./components/Elements/Package/addpackage.jsx";
+import Intermediate from "./components/Elements/Assignment/intermediate.jsx";
+import AssignPackage from "./components/Elements/Assignment/assignPackage.jsx";
+import PackageHome from "./components/Elements/Package/packageHome.jsx";
 // import PackageHistory from "./components/Elements/Package/History/packageModal.js";
-import ReceivePackage from "./components/Elements/Package/receivePackage.js";
+import ReceivePackage from "./components/Elements/Package/receivePackage.jsx";
 
-import AddNewExam from "./components/Elements/Exam/addExam.js";
-import ExamTable from "./components/Elements/Exam/examTable.js";
-import ExamDetails from "./components/Elements/Exam/examDetails.js";
+import AddNewExam from "./components/Elements/Exam/addExam.jsx";
+import ExamTable from "./components/Elements/Exam/examTable.jsx";
+import ExamDetails from "./components/Elements/Exam/examDetails.jsx";
 
-import Department from "./components/Elements/Department/departmentHome.js";
-import AddDepartment from "./components/Elements/Department/addDepartment.js";
+import Department from "./components/Elements/Department/departmentHome.jsx";
+import AddDepartment from "./components/Elements/Department/addDepartment.jsx";
 
-import Subject from "./components/Elements/Subjects/subjectTable.js";
-import AddNewSubject from "./components/Elements/Subjects/addSubject.js";
+import Subject from "./components/Elements/Subjects/subjectTable.jsx";
+import AddNewSubject from "./components/Elements/Subjects/addSubject.jsx";
 
-import Person from "./components/Elements/Person/person.js";
+import Person from "./components/Elements/Person/person.jsx";
 
-import Program from "./components/Elements/Program/programTable.js";
-import AddNewProgram from "./components/Elements/Program/addProgram.js";
+import Program from "./components/Elements/Program/programTable.jsx";
+import AddNewProgram from "./components/Elements/Program/addProgram.jsx";
 
-import Delete from "./components/Elements/Delete";
+import Delete from "./components/Elements/Delete.jsx";
 
-import Test from "./components/Widgets/test.js";
-import Login from "./components/Elements/Login/login.js";
-import Session from "./components/Elements/Session/Session.js";
+import Test from "./components/Widgets/test.jsx";
+import Login from "./components/Elements/Login/login.jsx";
+import Session from "./components/Elements/Session/Session.jsx";
 
-import Teacher from "./pages/teacher"
+import Teacher from "./pages/teacher/index.jsx"
 
-const adbs = require("ad-bs-converter")
+import adbs from "ad-bs-converter";
 
 
 const loader = async ( {params} ) =>{
   const teacherID = params.teacherID
-  const result = await fetch( `${process.env.REACT_APP_BASE_URL}API/query/getPersonSpecificPackage/${teacherID}`)
+  const result = await fetch( `/API/query/getPersonSpecificPackage/${teacherID}`)
   if( result.ok )
   {
     const jsonResult = await result.json();

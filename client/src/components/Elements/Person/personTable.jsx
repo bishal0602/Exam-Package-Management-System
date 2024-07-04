@@ -1,7 +1,7 @@
 import React from "react";
-import Table from "../../Widgets/Tables/tables.js";
+import Table from "../../Widgets/Tables/tables.jsx";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import utils from "../../../utils/utils.js";
+import utils from "../../../utils/utils.jsx";
 import { Link } from "react-router-dom";
 import "./persons.css";
 class PersonTable extends React.Component {
@@ -97,7 +97,7 @@ class PersonTable extends React.Component {
   };
 
   componentWillMount = () => {
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/getPerson")
+    fetch("/API/query/getPerson")
       .then((res) => res.json())
       .then((json) => {
         let categories = utils.createCategories(json, this.headings);

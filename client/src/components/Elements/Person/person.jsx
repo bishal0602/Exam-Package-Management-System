@@ -1,5 +1,5 @@
 import React from "react";
-import FormFields from "../../Widgets/Form/forms.js";
+import FormFields from "../../Widgets/Form/forms.jsx";
 import { MDBCard, MDBCardHeader, MDBCardBody } from "mdbreact";
 import axios from "axios";
 
@@ -152,7 +152,7 @@ class Person extends React.Component {
   };
   loadCollegeOptions = async () => {
     let { formData } = this.state;
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/getCollegeList")
+    fetch("/API/query/getCollegeList")
       .then((res) => {
         if (res.ok) return res.json();
       })
@@ -169,7 +169,7 @@ class Person extends React.Component {
 
   loadSubjectOptions = () =>{
     let { formData} = this.state;
-    fetch( process.env.REACT_APP_BASE_URL + "API/query/getSubjectList")
+    fetch( "/API/query/getSubjectList")
       .then( res =>{
         if ( res.ok ) return res.json();
       })
@@ -223,14 +223,14 @@ class Person extends React.Component {
       }
     }
     console.log(dataToSubmit);
-    let url = `${process.env.REACT_APP_BASE_URL}API/query/addPerson`;
+    let url = `/API/query/addPerson`;
     let methodType = "POST";
     //Update route , change params
     if (this.props.match) {
       const personID = this.props.match.params.personID;
       if (personID !== undefined) {
         url =
-          `${process.env.REACT_APP_BASE_URL}API/query/editPerson/` + personID;
+          `/API/query/editPerson/` + personID;
         methodType = "PUT";
       }
     }
@@ -279,7 +279,7 @@ class Person extends React.Component {
       return;
     }
     const res = await axios.post(
-      process.env.REACT_APP_BASE_URL + "API/query/upload",
+      "/API/query/upload",
       data,
       {
         onUploadProgress: (ProgressEvent) => {
@@ -295,7 +295,7 @@ class Person extends React.Component {
     });
 
     let response = await fetch(
-      process.env.REACT_APP_BASE_URL + "API/query/postExcel",
+      "/API/query/postExcel",
       {
         method: "post",
         headers: {
@@ -315,7 +315,7 @@ class Person extends React.Component {
       });
     }
 
-    //  fetch(process.env.REACT_APP_BASE_URL+"API/query/upload", {
+    //  fetch(import.meta.env.VITE_BACKEND_URL+"API/query/upload", {
     //    method: "POST",
     //   //  headers: {
     //   //   Accept: "application/json",

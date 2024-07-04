@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import FormFields from "../../Widgets/Form/forms.js";
+import FormFields from "../../Widgets/Form/forms.jsx";
 import { calendarFunctions } from "../../Widgets/jquery.nepaliDatePicker";
-import BreadCrumbs from "../../Widgets/Breadcrumb/breadcrumb.js";
-let adbs = require("ad-bs-converter");
+import BreadCrumbs from "../../Widgets/Breadcrumb/breadcrumb.jsx";
+import adbs from "ad-bs-converter";
 
 const breadCrumbItem = [
   {
@@ -228,7 +228,7 @@ class AssignPackage extends Component {
       return new Date(this.valueOf() + 864e5 * d);
     };
     fetch(
-      `${process.env.REACT_APP_BASE_URL}API/query/getOnePerson/${params.personID}`
+      `/API/query/getOnePerson/${params.personID}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -258,7 +258,7 @@ class AssignPackage extends Component {
       });
 
     //Fetch data from API and store data in options
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/getNotAssignedPackages")
+    fetch("/API/query/getNotAssignedPackages")
       .then((res) => res.json())
       .then((json) => {
         for (let pkg of json) {
@@ -363,7 +363,7 @@ class AssignPackage extends Component {
       }
     }
     console.log("datatosubmite", dataToSubmit);
-    fetch(process.env.REACT_APP_BASE_URL + "API/query/addAssignment", {
+    fetch("/API/query/addAssignment", {
       method: "POST",
       headers: {
         Accept: "application/json",

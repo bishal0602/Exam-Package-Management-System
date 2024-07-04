@@ -4,7 +4,7 @@ import { MDBDataTable, MDBCardBody, MDBCard, MDBCardHeader } from "mdbreact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBBtn } from "mdbreact";
-import TableOptions from "./tablesOptions.js";
+import TableOptions from "./tablesOptions.jsx";
 import { element } from "prop-types";
 
 class MainTable extends React.Component {

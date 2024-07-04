@@ -1,11 +1,11 @@
 import { React ,Component,useState, useEffect } from "react";
-import Table from "../../Widgets/Tables/tables.js";
+import Table from "../../Widgets/Tables/tables.jsx";
 import {
   faTrash,
   faEdit,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import utils from "../../../utils/utils.js";
+import utils from "../../../utils/utils.jsx";
 
 
 const ExamListingTable = (props) => {
