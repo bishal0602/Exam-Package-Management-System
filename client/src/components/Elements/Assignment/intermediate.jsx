@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PersonTable from "../Person/personTable.jsx";
-import PersonForm from "../Person/person.jsx";
-import { MDBCard, MDBCardHeader, MDBCardBody } from "mdbreact";
+import { MDBCard, MDBCardHeader, MDBCardBody, MDBBtn } from "mdbreact";
 import BreadCrumbs from "../../Widgets/Breadcrumb/breadcrumb.jsx";
 import { Link } from "react-router-dom";
 import "./assignment.css";
@@ -26,7 +25,9 @@ class Intermediate extends Component {
           <MDBCardHeader>
             <span>Choose Person to Assign </span>
             <Link to="/admin/add-new-person" style={{ float: "right" }}>
+            <MDBBtn>
               Not Registered Yet?
+            </MDBBtn>
             </Link>
           </MDBCardHeader>
           <MDBCardBody>

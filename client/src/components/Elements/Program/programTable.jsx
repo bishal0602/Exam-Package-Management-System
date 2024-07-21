@@ -30,11 +30,11 @@ class ProgramTable extends Component {
     },
   ];
   actions = [
-    {
-      text: "Edit",
-      icon: faEdit,
-      link: "/admin/edit-program/",
-    },
+    // {
+    //   text: "Edit",
+    //   icon: faEdit,
+    //   link: "/admin/edit-program/",
+    // },
     {
       text: "Delete",
       icon: faTrash,

@@ -18,11 +18,11 @@ class DepartmentHome extends React.Component {
     },
   ];
   actions = [
-    {
-      text: "Edit",
-      icon: faEdit,
-      link: "/admin/edit-department/",
-    },
+    // {
+    //   text: "Edit",
+    //   icon: faEdit,
+    //   link: "/admin/edit-department/",
+    // },
     {
       text: "Delete",
       icon: faTrash,

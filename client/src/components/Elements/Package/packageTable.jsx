@@ -63,11 +63,11 @@ class PackageTable extends React.Component {
     },
   ];
   actions = [
-    {
-      text: "Edit",
-      icon: faEdit,
-      link: "/admin/edit-package/",
-    },
+    // {
+    //   text: "Edit",
+    //   icon: faEdit,
+    //   link: "/admin/edit-package/",
+    // },
     {
       text: "Delete",
       icon: faTrash,

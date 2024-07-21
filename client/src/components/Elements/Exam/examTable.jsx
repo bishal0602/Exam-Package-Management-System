@@ -25,16 +25,16 @@ class ExamTable extends React.Component {
   ];
 
   actions = [
-    {
-      text: "Details",
-      icon: faInfoCircle,
-      link: "/admin/exam-details/",
-    },
-    {
-      text: "Edit",
-      icon: faEdit,
-      link: "/admin/edit-exam/",
-    },
+    // {
+    //   text: "Details",
+    //   icon: faInfoCircle,
+    //   link: "/admin/exam-details/",
+    // },
+    // {
+    //   text: "Edit",
+    //   icon: faEdit,
+    //   link: "/admin/edit-exam/",
+    // },
     {
       text: "Delete",
       icon: faTrash,
