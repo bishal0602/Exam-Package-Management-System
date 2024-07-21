@@ -75,11 +75,11 @@ class PersonTable extends React.Component {
     // },
   ];
   actions = [
-    {
-      text: "Edit",
-      icon: faEdit,
-      link: "/admin/edit-person/",
-    },
+    // {
+    //   text: "Edit",
+    //   icon: faEdit,
+    //   link: "/admin/edit-person/",
+    // },
     {
       text: "Delete",
       icon: faTrash,

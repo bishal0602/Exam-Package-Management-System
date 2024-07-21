@@ -26,11 +26,11 @@ class SubjectTable extends Component {
   ];
 
   actions = [
-    {
-      text: "Edit",
-      icon: faEdit,
-      link: "/admin/edit-subject/",
-    },
+    // {
+    //   text: "Edit",
+    //   icon: faEdit,
+    //   link: "/admin/edit-subject/",
+    // },
     {
       text: "Delete",
       icon: faTrash,
