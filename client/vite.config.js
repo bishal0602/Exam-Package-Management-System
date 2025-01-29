@@ -10,7 +10,7 @@ export default defineConfig(() => {
     server: {
     proxy: {
       '/API': {
-        target: 'http://poka-backend.bct.itclub.pp.ua',
+        target: 'https://poka-backend.bct.itclub.pp.ua',
         changeOrigin: true,
       },
     },
