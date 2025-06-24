@@ -1,9 +1,8 @@
-import React from "react";
-import Table from "../Widgets/Tables/tables.jsx";
 import { faReceipt } from "@fortawesome/free-solid-svg-icons";
-import utils from "../../utils/utils.jsx";
 import adbs from "ad-bs-converter";
-
+import React from "react";
+import utils from "../../utils/utils.jsx";
+import Table from "../Widgets/Tables/tables.jsx";
 
 class PendingPackageTable extends React.Component {
   sortingOnlyList = ["Status"];
@@ -126,14 +125,13 @@ class PendingPackageTable extends React.Component {
           element["Overdue"] = { isOverdue: diff < 0, days: Math.abs(diff) };
           element["status"] = diff < 0 ? "Overdue" : "Pending";
           element["dateOfDeadline"] = element["dateOfDeadline"].split("T")[0];
-          element["dateOfAssignment"] = element["dateOfAssignment"].split(
-            "T"
-          )[0];
+          element["dateOfAssignment"] =
+            element["dateOfAssignment"].split("T")[0];
         });
 
-        json.filter(( elem ) =>{
-          return true
-        } )
+        json.filter((elem) => {
+          return true;
+        });
         console.log("Element after Overdue", json);
         let categories = {};
         categories = utils.createCategories(json, this.headings);
@@ -147,13 +145,11 @@ class PendingPackageTable extends React.Component {
       });
   };
 
-
   componentDidMount = () => {
-    console.log( this.props )
+    console.log(this.props);
     if (!this.props.initialData) {
       this.getPendingPackageFromAPI();
     }
-
   };
 
   statehandler = (states) => {

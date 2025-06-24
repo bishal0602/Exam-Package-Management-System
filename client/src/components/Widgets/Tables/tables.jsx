@@ -1,11 +1,15 @@
-import React from "react";
-import "./tables.css";
-import { MDBDataTable, MDBCardBody, MDBCard, MDBCardHeader } from "mdbreact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  MDBBtn,
+  MDBDataTable,
+  MDBPopover,
+  MDBPopoverBody,
+  MDBPopoverHeader,
+} from "mdbreact";
+import React from "react";
 import { Link } from "react-router-dom";
-import { MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBBtn } from "mdbreact";
+import "./tables.css";
 import TableOptions from "./tablesOptions.jsx";
-import { element } from "prop-types";
 
 class MainTable extends React.Component {
   //MDBtable needs data in JSON format.Data methods is used for that.
@@ -35,7 +39,7 @@ class MainTable extends React.Component {
       {
         label: "Action",
         sort: "",
-        field: "action"
+        field: "action",
       },
     ];
     //to make SN first column and Action Last column
@@ -61,7 +65,7 @@ class MainTable extends React.Component {
               className="btn-xs btn-primary"
               onClick={() => action.onClick()}
             >
-              {action.text }
+              {action.text}
             </button>
           );
         } else {
@@ -124,7 +128,7 @@ class MainTable extends React.Component {
     if (this.props.quickLinks) {
       return this.props.quickLinks.map((element, index) => {
         return (
-          <Link to={element.link} key = { index }>
+          <Link to={element.link} key={index}>
             <button className="btn btn-secondary">{element.text}</button>
           </Link>
         );

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import adbs from "ad-bs-converter";
+import { Component } from "react";
+import BreadCrumbs from "../../Widgets/Breadcrumb/breadcrumb.jsx";
 import FormFields from "../../Widgets/Form/forms.jsx";
 import { calendarFunctions } from "../../Widgets/jquery.nepaliDatePicker";
-import BreadCrumbs from "../../Widgets/Breadcrumb/breadcrumb.jsx";
-import adbs from "ad-bs-converter";
 
 const breadCrumbItem = [
   {
@@ -220,16 +220,16 @@ class AssignPackage extends Component {
     return [year, month, day].join("/");
   }
   componentDidMount = () => {
-    let currentLocation = window.location.href
-    let personID = currentLocation.substring(currentLocation.lastIndexOf('/') + 1 );
-    let params = { personID}
+    let currentLocation = window.location.href;
+    let personID = currentLocation.substring(
+      currentLocation.lastIndexOf("/") + 1
+    );
+    let params = { personID };
 
     Date.prototype.addDays = function (d) {
       return new Date(this.valueOf() + 864e5 * d);
     };
-    fetch(
-      `/API/query/getOnePerson/${params.personID}`
-    )
+    fetch(`/API/query/getOnePerson/${params.personID}`)
       .then((res) => res.json())
       .then((json) => {
         let { formData } = this.state;

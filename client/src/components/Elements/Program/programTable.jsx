@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from "react";
-import Table from "../../Widgets/Tables/tables.jsx";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Component, Fragment } from "react";
 import utils from "../../../utils/utils.jsx";
+import Table from "../../Widgets/Tables/tables.jsx";
 class ProgramTable extends Component {
   headings = [
     {

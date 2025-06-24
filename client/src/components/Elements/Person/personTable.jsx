@@ -1,8 +1,8 @@
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import Table from "../../Widgets/Tables/tables.jsx";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import utils from "../../../utils/utils.jsx";
 import { Link } from "react-router-dom";
+import utils from "../../../utils/utils.jsx";
+import Table from "../../Widgets/Tables/tables.jsx";
 import "./persons.css";
 class PersonTable extends React.Component {
   headings = [

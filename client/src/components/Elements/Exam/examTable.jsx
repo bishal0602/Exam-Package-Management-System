@@ -1,10 +1,9 @@
 import React from "react";
 //import ExamGroupedTable from "./examGroupedTable.js";
 
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Table from "../../Widgets/Tables/tables.jsx";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import utils from "../../../utils/utils.jsx";
+import Table from "../../Widgets/Tables/tables.jsx";
 
 class ExamTable extends React.Component {
   quickLinks = [{ text: "Add New Exam", link: "/admin/add-new-exam" }];
@@ -60,9 +59,9 @@ class ExamTable extends React.Component {
       return rv;
     }, {});
   };
-  
+
   componentDidMount = () => {
-    console.log( 'hellow')
+    console.log("hellow");
     fetch("/API/query/getExams")
       .then((res) => res.json())
       .then((json) => {
@@ -73,7 +72,7 @@ class ExamTable extends React.Component {
           // const part = element.part === "I" ? "Odd" : "Even";
           const type = element.examType;
           const sub = element.subjectName;
-          
+
           element.examTitle = sub + " - " + examYear + " - " + "(" + type + ")";
         });
 
@@ -106,10 +105,10 @@ class ExamTable extends React.Component {
     this.setState(states);
   };
   render() {
-    console.log('error')
+    console.log("error");
     console.log(this.state.tableData);
     return (
-      <div className = "examTable">
+      <div className="examTable">
         <Table
           headings={this.headings}
           tableData={

@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import FormFields from "../../Widgets/Form/forms.jsx";
+import { Component } from "react";
 import BreadCrumb from "../../Widgets/Breadcrumb/breadcrumb.jsx";
-import ExamTable from "./examListingTable.jsx";
+import FormFields from "../../Widgets/Form/forms.jsx";
 import { calendarFunctions } from "../../Widgets/jquery.nepaliDatePicker";
+import ExamTable from "./examListingTable.jsx";
 // import { useNavigate } from 'react-router-dom'
 import adbs from "ad-bs-converter";
 
@@ -155,7 +155,6 @@ class AddNewExam extends Component {
       errorOnSubmission: false,
       postedData: [],
     };
-    
   }
 
   loadProgramOptions = async () => {
@@ -282,13 +281,11 @@ class AddNewExam extends Component {
     //Edit route
     const examID = this.props.match?.params.examID;
     if (examID !== undefined) {
-      await fetch(
-        "/API/query/getExams/" + examID
-      )
+      await fetch("/API/query/getExams/" + examID)
         .then((res) => res.json())
         .then((json) => {
           let { formData } = this.state;
-          console.log(json[0])
+          console.log(json[0]);
           formData.level.value = json[0].academicDegree;
           formData.programID.value = json[0].programName;
           // formData.year.value = json[0].year;
@@ -422,7 +419,7 @@ class AddNewExam extends Component {
           let { postedData } = this.state;
           if (res.status === 200) {
             if (examID !== undefined || event.target.id === "save") {
-              window.location = '/admin'
+              window.location = "/admin";
               // navigate(-1);
               return;
             }
@@ -490,7 +487,7 @@ class AddNewExam extends Component {
   };
 
   render() {
-    console.log(this.state.formData)
+    console.log(this.state.formData);
     return (
       <div className="container-fluid">
         <BreadCrumb breadcrumbItems={breadCrumbItems} />

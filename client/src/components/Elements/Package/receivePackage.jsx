@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { Navigate } from "react-router-dom";
 import { calendarFunctions } from "../../Widgets/jquery.nepaliDatePicker";
 //Components
-import Form from "../../Widgets/Form/forms.jsx";
 import adbs from "ad-bs-converter";
+import Form from "../../Widgets/Form/forms.jsx";
 
 class ReceivePackage extends Component {
   state = {
@@ -217,16 +217,14 @@ class ReceivePackage extends Component {
       const digitsAfterLastSlash = url.substring(lastSlashIndex + 1);
 
       // Filter out non-digit characters using a regular expression
-      const digits = digitsAfterLastSlash.replace(/\D/g, '');
+      const digits = digitsAfterLastSlash.replace(/\D/g, "");
 
       return digits;
     }
     let currentURL = window.location.href;
-    
-    let params = { assignmentID : getDigitsAfterLastSlash( currentURL) }
-    fetch(
-      `/API/query/getOneAssignment/${params.assignmentID}`
-    )
+
+    let params = { assignmentID: getDigitsAfterLastSlash(currentURL) };
+    fetch(`/API/query/getOneAssignment/${params.assignmentID}`)
       .then((res) => res.json())
       .then((json) => {
         //This type of Destructing enable to use that state variable directly and it is better than setting state directly this.state = ....
@@ -265,7 +263,7 @@ class ReceivePackage extends Component {
   }
   handleReceive = () => {
     let assignmentID = this.extractNumberFromURL(window.location);
-    let params = {assignmentID}
+    let params = { assignmentID };
     let dataToSubmit = {};
     dataToSubmit["id"] = params.assignmentID;
     if (
@@ -307,7 +305,7 @@ class ReceivePackage extends Component {
         });
       }
     });
-  }
+  };
 
   //Difference between Deadling and Submission Day to calculate Due Day
   setDifference = () => {

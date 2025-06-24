@@ -1,7 +1,7 @@
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import Table from "../../Widgets/Tables/tables.jsx";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import utils from "../../../utils/utils.jsx";
+import Table from "../../Widgets/Tables/tables.jsx";
 class PackageTable extends React.Component {
   sortingOnlyList = ["Status"];
   headings = [
@@ -153,7 +153,7 @@ class PackageTable extends React.Component {
   render() {
     console.log(this.state.tableData);
     return (
-      <div className ='mainTable'>
+      <div className="mainTable">
         <Table
           headings={this.headings}
           tableData={

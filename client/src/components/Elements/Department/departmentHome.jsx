@@ -1,7 +1,7 @@
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import Breadcrumb from "../../Widgets/Breadcrumb/breadcrumb.jsx";
 import Table from "../../Widgets/Tables/tables.jsx";
-import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 class DepartmentHome extends React.Component {
   headings = [

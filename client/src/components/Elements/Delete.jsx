@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Delete(props) {
@@ -43,7 +43,10 @@ export default function Delete(props) {
           {deleted ? (
             <p>Your {type} has been deleted.</p>
           ) : (
-            <p>Cannot delete your {type},{deleted?"fetched":"not fetched"} because it has associated data.</p>
+            <p>
+              Cannot delete your {type},{deleted ? "fetched" : "not fetched"}{" "}
+              because it has associated data.
+            </p>
           )}
         </p>
       )}

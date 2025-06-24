@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import FormFields from "../../Widgets/Form/forms.jsx";
 import ProgramTable from "./programTable.jsx";
 
@@ -89,9 +89,7 @@ class AddNewProgram extends Component {
     //Edit route
     const programID = this.props.match?.params.programID;
     if (programID !== undefined) {
-      fetch(
-        "/API/query/getProgram/" + programID
-      )
+      fetch("/API/query/getProgram/" + programID)
         .then((res) => res.json())
         .then((json) => {
           let { formData } = this.state;

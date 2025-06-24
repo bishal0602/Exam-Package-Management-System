@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import {useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Session = () => {
   const [newSessionName, setNewSessionName] = useState("");
   const [oldArchives, setOldArchives] = useState([]);
   const [selectedOldArchive, setSelectedOldArchive] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("/API/query/getOldArchives")
       .then((res) => {
@@ -45,7 +45,7 @@ const Session = () => {
           if (res.status === 409) alert("The file name already exist");
         })
         .catch((err) => console.log(err));
-        navigate('/admin')
+      navigate("/admin");
     }
 
     return;
@@ -77,13 +77,13 @@ const Session = () => {
             alert("Successfully Loaded Data");
           }
         })
-        .catch((err) => console.log(err)); 
-        navigate('/admin')
+        .catch((err) => console.log(err));
+      navigate("/admin");
     }
   };
 
   return (
-    <div style = {{padding:'40px'}}>
+    <div style={{ padding: "40px" }}>
       <div className="mt-2 ">
         <h4>Start New Session</h4>
         <label> New Session Name</label>

@@ -1,19 +1,13 @@
-import { React ,Component,useState, useEffect } from "react";
-import Table from "../../Widgets/Tables/tables.jsx";
-import {
-  faTrash,
-  faEdit,
-  faInfoCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 import utils from "../../../utils/utils.jsx";
-
+import Table from "../../Widgets/Tables/tables.jsx";
 
 const ExamListingTable = (props) => {
-
-console.log(props,'fffffffffffffffffffffffffff')
-  const [loaded, setLoaded] = useState(false)
-const [tableData, setTableData] = useState([])
-const [categories, setCategories] = useState({})
+  console.log(props, "fffffffffffffffffffffffffff");
+  const [loaded, setLoaded] = useState(false);
+  const [tableData, setTableData] = useState([]);
+  const [categories, setCategories] = useState({});
 
   // state = {
   //   tableData: [],
@@ -77,49 +71,47 @@ const [categories, setCategories] = useState({})
     },
   ];
 
-  useEffect((props)=> {
+  useEffect((props) => {
     if (props.hasOwnProperty("postedData")) {
       props.postedData.forEach((element) => {
         delete element.academicDegree;
         delete element.programID;
       });
       setLoaded(true);
-      setTableData(props.postedData)
-      
+      setTableData(props.postedData);
     } else {
       let tableData = props.tableData;
       tableData.forEach((element) => {
         delete element.examTitle;
       });
       let categories = utils.createCategories(tableData, headings);
-      setTableData(tableData)
+      setTableData(tableData);
       setCategories(categories);
-    };
+    }
   });
 
-  useEffect((props)=> {
+  useEffect((props) => {
     if (props.hasOwnProperty("postedData")) {
       props.postedData.forEach((element) => {
         delete element.academicDegree;
         delete element.programID;
       });
       setLoaded(true);
-      setTableData(props.postedData)
+      setTableData(props.postedData);
     }
   });
- 
+
   return (
     <Table
-    headings={headings}
-    tableData={tableData}
-    actions={actions}
-    categories={categories}
-  />
- )
-}
+      headings={headings}
+      tableData={tableData}
+      actions={actions}
+      categories={categories}
+    />
+  );
+};
 
-export default ExamListingTable
-
+export default ExamListingTable;
 
 // export class ExamListingTable extends Component {
 //   state = {

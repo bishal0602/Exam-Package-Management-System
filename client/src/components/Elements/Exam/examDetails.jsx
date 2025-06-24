@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
+import { MDBCard, MDBCardBody, MDBCardHeader } from "mdb-react-ui-kit";
 import PendingPackageTable from "../../Home/pendingPackageTable.jsx";
-import { MDBCard, MDBCardBody, MDBCardHeader } from "mdbreact";
 import PackageTable from "../Package/packageTable.jsx";
 
 import ExamListingTable from "./examListingTable.jsx";
@@ -30,9 +30,7 @@ export class ExamDetails extends Component {
     const yyDate = this.groupDetails.exams[0].date.split("/")[0];
     const examType = this.groupDetails.exams[0].examType;
     console.log(yyDate);
-    fetch(
-      `/API/query/getPendingExamPackages/${groupID}`
-    )
+    fetch(`/API/query/getPendingExamPackages/${groupID}`)
       .then((res) => res.json())
       .then((json) => {
         this.setState({
@@ -40,9 +38,7 @@ export class ExamDetails extends Component {
         });
       });
 
-    fetch(
-      `/API/query/getNotAssignedExamPackages/${groupID}`
-    )
+    fetch(`/API/query/getNotAssignedExamPackages/${groupID}`)
       .then((res) => res.json())
       .then((json) => {
         this.setState({
@@ -53,15 +49,13 @@ export class ExamDetails extends Component {
 
   expandClickHandler = (event) => {
     try {
-      document.getElementById(
-        `${event.target.id}Body`
-      ).hidden = !document.getElementById(`${event.target.id}Body`).hidden;
+      document.getElementById(`${event.target.id}Body`).hidden =
+        !document.getElementById(`${event.target.id}Body`).hidden;
 
-      document.getElementById(
-        `${event.target.id}Icon`
-      ).innerHTML = document.getElementById(`${event.target.id}Body`).hidden
-        ? '<i class = "chevronIcon fas fa-chevron-up"></i>'
-        : '<i class = "chevronIcon fas fa-chevron-down"></i>';
+      document.getElementById(`${event.target.id}Icon`).innerHTML =
+        document.getElementById(`${event.target.id}Body`).hidden
+          ? '<i class = "chevronIcon fas fa-chevron-up"></i>'
+          : '<i class = "chevronIcon fas fa-chevron-down"></i>';
     } catch {
       console.error(event.target);
     }

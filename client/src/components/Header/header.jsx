@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import "./header.css";
-import { Link , useNavigate} from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   // faUser,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, useNavigate } from "react-router-dom";
 // import SideNav from "./SideNav/sidenav.js";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 
 const Header = (props) => {
   const navigate = useNavigate();
@@ -39,35 +39,37 @@ const Header = (props) => {
         </div>
         <div className="text-area">
           <div className="main-title row">
-            <Link to="/admin" style={{ textDecoration: "none", color: "white" }}>
+            <Link
+              to="/admin"
+              style={{ textDecoration: "none", color: "white" }}
+            >
               Exam Package Management System
             </Link>
             <h6 className=" text-secondary w-100 text-center">{session}</h6>
           </div>
         </div>
         {/* {authenticated ? ( */}
-          <div className="user-logo">
-            <button
-              onClick={() => {
-                fetch(`/API/logout`).then(( res ) => {
-                  if( res.ok ){
-                     navigate( '/login')
-                  }
-                   else toast('Coundn\'t Logout')   
-                });
-              }}
-              className="btn btn-link"
-              style={{
-                fontSize: "1em",
-              }}
-            >
-              <FontAwesomeIcon
-                icon={faSignOutAlt}
-                style={{ color: "white" }}
-                className="user-icon"
-              />
-            </button>
-          </div>
+        <div className="user-logo">
+          <button
+            onClick={() => {
+              fetch(`/API/logout`).then((res) => {
+                if (res.ok) {
+                  navigate("/login");
+                } else toast("Coundn't Logout");
+              });
+            }}
+            className="btn btn-link"
+            style={{
+              fontSize: "1em",
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faSignOutAlt}
+              style={{ color: "white" }}
+              className="user-icon"
+            />
+          </button>
+        </div>
         {/* // ) : (
         //   <div className="user-logo">
         //     <Link

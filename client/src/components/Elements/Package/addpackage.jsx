@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import { Component } from "react";
+import BreadCrumb from "../../Widgets/Breadcrumb/breadcrumb.jsx";
 import FormFields from "../../Widgets/Form/forms.jsx";
 import PackageTable from "./packageTable.jsx";
-import BreadCrumb from "../../Widgets/Breadcrumb/breadcrumb.jsx";
 
 const breadCrumbItems = [
   {
@@ -131,7 +131,6 @@ class AddNewPackage extends Component {
           link: "/admin/add-new-program",
         },
       },
-
 
       subjectID: {
         element: "select",
@@ -300,7 +299,7 @@ class AddNewPackage extends Component {
       temp["text"] = `${exam.programName}-${exam.subjectName}-${exam.date}`;
       examOptions.push(temp);
     }
-    console.log( "filteredExam", filteredExamData);
+    console.log("filteredExam", filteredExamData);
     await this.setState({
       ...this.state,
       formData: {
@@ -316,21 +315,21 @@ class AddNewPackage extends Component {
     });
   };
 
-  extractNumberFromURL =(url) => {
-  // Define a regular expression pattern to match the number
-  var regex = /\/(\d+)\b/;
+  extractNumberFromURL = (url) => {
+    // Define a regular expression pattern to match the number
+    var regex = /\/(\d+)\b/;
 
-  // Use the `exec` method to search for the pattern in the URL
-  var match = regex.exec(url);
+    // Use the `exec` method to search for the pattern in the URL
+    var match = regex.exec(url);
 
-  // If a match is found, return the captured number
-  if (match && match.length > 1) {
-    return parseInt(match[1]);
-  }
+    // If a match is found, return the captured number
+    if (match && match.length > 1) {
+      return parseInt(match[1]);
+    }
 
-  // If no match is found, return null
-  return null;
-}
+    // If no match is found, return null
+    return null;
+  };
 
   componentWillMount = async () => {
     let { examID } = this.state.formData;
@@ -341,7 +340,7 @@ class AddNewPackage extends Component {
     await fetch("/API/query/getProgramList")
       .then((res) => res.json())
       .then((json) => {
-        console.log( json )
+        console.log(json);
         programData = json;
       });
 
@@ -349,21 +348,18 @@ class AddNewPackage extends Component {
       .then((res) => res.json())
       .then((json) => {
         subjectData = json;
-        console.log("This is subject data", subjectData)
+        console.log("This is subject data", subjectData);
       });
     await fetch("/API/query/getExams")
       .then((res) => res.json())
       .then((json) => {
         examData = json;
       });
-    
-    
+
     const packageID = this.extractNumberFromURL(window.location);
 
     if (packageID !== undefined) {
-      fetch(
-        "/API/query/getOnePackage/" + packageID
-      )
+      fetch("/API/query/getOnePackage/" + packageID)
         .then((res) => res.json())
         .then(async (json) => {
           let { formData } = this.state;
@@ -397,7 +393,6 @@ class AddNewPackage extends Component {
           );
         });
     } else {
-      
       await this.setState({
         programData,
         subjectData,

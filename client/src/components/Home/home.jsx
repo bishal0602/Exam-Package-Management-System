@@ -1,10 +1,10 @@
+import { faEdit, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { MDBCard, MDBCardBody, MDBCardHeader } from "mdb-react-ui-kit";
 import React from "react";
+import BreadCrumb from "../Widgets/Breadcrumb/breadcrumb.jsx";
+import "./buttons.css";
 import Buttons from "./homebuttons.jsx";
 import PendingPackageTable from "./pendingPackageTable.jsx";
-import "./buttons.css";
-import { faPlus, faEdit } from "@fortawesome/free-solid-svg-icons";
-import BreadCrumb from "../Widgets/Breadcrumb/breadcrumb.jsx";
-import { MDBCard, MDBCardBody, MDBCardHeader } from "mdbreact";
 
 const buttons = [
   {
@@ -37,12 +37,10 @@ const breadcrumbItems = [
 ];
 class Home extends React.Component {
   state = {
-    data: [
-    ],
+    data: [],
   };
 
-  componentDidMount = () => {
-  };
+  componentDidMount = () => {};
   PendingTitle = () => {
     return (
       <div className="pendingTitle">

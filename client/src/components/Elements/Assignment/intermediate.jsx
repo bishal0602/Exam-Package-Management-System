@@ -1,8 +1,8 @@
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardHeader } from "mdb-react-ui-kit";
 import React, { Component } from "react";
-import PersonTable from "../Person/personTable.jsx";
-import { MDBCard, MDBCardHeader, MDBCardBody, MDBBtn } from "mdbreact";
-import BreadCrumbs from "../../Widgets/Breadcrumb/breadcrumb.jsx";
 import { Link } from "react-router-dom";
+import BreadCrumbs from "../../Widgets/Breadcrumb/breadcrumb.jsx";
+import PersonTable from "../Person/personTable.jsx";
 import "./assignment.css";
 
 const breadCrumbItem = [
@@ -25,9 +25,7 @@ class Intermediate extends Component {
           <MDBCardHeader>
             <span>Choose Person to Assign </span>
             <Link to="/admin/add-new-person" style={{ float: "right" }}>
-            <MDBBtn>
-              Not Registered Yet?
-            </MDBBtn>
+              <MDBBtn>Not Registered Yet?</MDBBtn>
             </Link>
           </MDBCardHeader>
           <MDBCardBody>

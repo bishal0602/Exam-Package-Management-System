@@ -1,17 +1,12 @@
-import React,{Component,Fragment} from 'react';
+import { Component, Fragment } from "react";
 
 class Program extends Component {
-    state= {
-        formData:[]
-    }
+  state = {
+    formData: [],
+  };
 
-    render(){
-        return(
-            <Fragment>
-
-
-            </Fragment>
-        )
-    }
+  render() {
+    return <Fragment></Fragment>;
+  }
 }
 export default Program;

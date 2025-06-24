@@ -1,8 +1,7 @@
+import axios from "axios";
+import { MDBCard, MDBCardBody, MDBCardHeader } from "mdb-react-ui-kit";
 import React from "react";
 import FormFields from "../../Widgets/Form/forms.jsx";
-import { MDBCard, MDBCardHeader, MDBCardBody } from "mdbreact";
-import axios from "axios";
-
 
 class Person extends React.Component {
   state = {
@@ -101,7 +100,7 @@ class Person extends React.Component {
         config: {
           name: "Subject",
           options: [{ val: "", text: "" }],
-          placeholder:"Select the subject Taught"
+          placeholder: "Select the subject Taught",
         },
         validation: {
           required: false,
@@ -111,7 +110,7 @@ class Person extends React.Component {
         validationText: "",
       },
 
-      teachingExperience:{
+      teachingExperience: {
         element: "input",
         value: "",
         required: true,
@@ -127,20 +126,22 @@ class Person extends React.Component {
         valid: true,
         touched: false,
       },
-      jobType:{
+      jobType: {
         element: "select",
         value: "",
         required: true,
         labelText: "Job Type",
         config: {
           name: "Job Type",
-          options:[{ value: 'Full Time', text: 'Full Time' }, { value: 'Part Time' , text: 'Part Time'}]
+          options: [
+            { value: "Full Time", text: "Full Time" },
+            { value: "Part Time", text: "Part Time" },
+          ],
         },
 
         valid: true,
         touched: false,
-
-      }
+      },
     },
     error: false,
     errorText: "",
@@ -163,25 +164,27 @@ class Person extends React.Component {
           return { val: college.id, text: college.collegeName };
         });
         this.setState(newFormData);
-        console.log("newFormData", newFormData)
+        console.log("newFormData", newFormData);
       });
   };
 
-  loadSubjectOptions = () =>{
-    let { formData} = this.state;
-    fetch( "/API/query/getSubjectList")
-      .then( res =>{
-        if ( res.ok ) return res.json();
+  loadSubjectOptions = () => {
+    let { formData } = this.state;
+    fetch("/API/query/getSubjectList")
+      .then((res) => {
+        if (res.ok) return res.json();
       })
-        .then( res =>{
-          console.log( res )
-          const newFormData = { ...formData }
-          newFormData["subjectTaught"]["config"]["options"] = res.map( subject =>{
-            return { val: subject.id, text: subject.subjectName}
-          })
-          this.setState( newFormData )
-        })
-  }
+      .then((res) => {
+        console.log(res);
+        const newFormData = { ...formData };
+        newFormData["subjectTaught"]["config"]["options"] = res.map(
+          (subject) => {
+            return { val: subject.id, text: subject.subjectName };
+          }
+        );
+        this.setState(newFormData);
+      });
+  };
 
   updateForm = (newState) => {
     this.setState({
@@ -200,11 +203,11 @@ class Person extends React.Component {
     event.preventDefault();
     event.persist();
     let dataToSubmit = {};
-    
+
     for (let key in this.state.formData) {
       dataToSubmit[key] = this.state.formData[key].value.toString();
       const state = this.state;
-      
+
       if (
         dataToSubmit[key] === null ||
         dataToSubmit[key].match(/^ *$/) !== null ||
@@ -229,8 +232,7 @@ class Person extends React.Component {
     if (this.props.match) {
       const personID = this.props.match.params.personID;
       if (personID !== undefined) {
-        url =
-          `/API/query/editPerson/` + personID;
+        url = `/API/query/editPerson/` + personID;
         methodType = "PUT";
       }
     }
@@ -278,31 +280,24 @@ class Person extends React.Component {
       });
       return;
     }
-    const res = await axios.post(
-      "/API/query/upload",
-      data,
-      {
-        onUploadProgress: (ProgressEvent) => {
-          this.setState({
-            loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100,
-          });
-        },
-      }
-    );
+    const res = await axios.post("/API/query/upload", data, {
+      onUploadProgress: (ProgressEvent) => {
+        this.setState({
+          loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100,
+        });
+      },
+    });
 
     this.setState({
       isInserting: "onProgress",
     });
 
-    let response = await fetch(
-      "/API/query/postExcel",
-      {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-        },
-      }
-    );
+    let response = await fetch("/API/query/postExcel", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+      },
+    });
     if (response.status == 500) {
       this.setState({
         isInserting: "error",
@@ -354,7 +349,7 @@ class Person extends React.Component {
           </MDBCardHeader>
           <MDBCardBody>
             {/* {this.state.isImport ? ( */}
-              {/* <div>
+            {/* <div>
                 {this.checkInserting()}
                 <MDBProgress value={this.state.loaded}>
                   {Math.round(this.state.loaded, 2)}%
@@ -370,11 +365,11 @@ class Person extends React.Component {
                 </button>
               </div> */}
             {/* // ) : ( */}
-              <FormFields
-                formData={this.state.formData}
-                change={(newState) => this.updateForm(newState)}
-                submitForm={(event) => this.submitForm(event)}
-              />
+            <FormFields
+              formData={this.state.formData}
+              change={(newState) => this.updateForm(newState)}
+              submitForm={(event) => this.submitForm(event)}
+            />
             {/* // )} */}
           </MDBCardBody>
         </MDBCard>
