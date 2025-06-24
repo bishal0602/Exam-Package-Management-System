@@ -3,16 +3,15 @@ const session = require("express-session");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const cors = require('cors')
-const path = require('path')
+const cors = require("cors");
+const path = require("path");
 const LocalStrategy = require("passport-local").Strategy;
 
 const { getByUsernamePassword, getById } = require("./controller/User");
 const isAuthenticated = require("./middlewares/isAuthenticated");
 
 const app = express();
-app.use( cors() )
-
+app.use(cors());
 
 app.use(
   session({
@@ -61,13 +60,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
-
 try {
-  
   // commenting for debugging locally
   // uncomment the following lines for deplopyment
-
 
   // app.use(express.static(path.join(__dirname, 'build')))
   // app.get('/', ( req, res ) =>{
@@ -88,8 +83,7 @@ try {
       res.sendStatus(401);
     }
   });
- 
- 
+
   app.post("/API/login", function (req, res, next) {
     passport.authenticate("local", function (err, user, info) {
       if (err) {
@@ -102,17 +96,19 @@ try {
         if (err) {
           return next(err);
         }
-        console.log('user authenticated')
+        console.log("user authenticated");
         return res.sendStatus(200);
       });
     })(req, res, next);
   });
 
   app.get("/API/logout", (req, res, next) => {
-    console.log('User logged out successfully')
-    req.logout(err =>{
-      if ( err ) { return next( err )}
-      res.sendStatus(200)
+    console.log("User logged out successfully");
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.sendStatus(200);
     });
   });
 
@@ -123,16 +119,16 @@ try {
     routes
   );
 
-  app.get('/test', ( req, res )=>{
-    res.send(JSON.stringify('Server is running'))
-  })
-  app.get("/*", ( req, res )=>{
-    res.sendStatus(404)
+  app.get("/test", (req, res) => {
+    res.send(JSON.stringify("Server is running"));
+  });
+  app.get("/*any", (req, res) => {
+    res.sendStatus(404);
   });
 
   //PORT
   const port = 9132;
-  app.listen(port,'0.0.0.0', () => console.log(`Listening on port ${port}`));
+  app.listen(port, "0.0.0.0", () => console.log(`Listening on port ${port}`));
 } catch (error) {
   console.error(error);
 }

@@ -16,7 +16,7 @@ router.use("/query", getQuery);
 router.use("/query", putQuery);
 router.use("/query", deleteQuery);
 router.use("/query", handleSession);
-router.use("/*", (req, res) => {
+router.use("/*any", (req, res) => {
   res.status(404).json({ message: "Not Found" });
 });
 
